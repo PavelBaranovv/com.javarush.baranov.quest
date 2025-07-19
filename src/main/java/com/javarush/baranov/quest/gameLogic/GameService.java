@@ -34,7 +34,7 @@ public class GameService {
     private GameState handleBridgeComing(String choice) {
         if (choice.equals("Подняться на мостик")) {
             return GameState.COME_ON_BRIDGE;
-        } else if (choice.equals("Остаться в комнате")) {
+        } else if (choice.equals("Остаться в каюте")) {
             return GameState.STAY_IN_ROOM;
         }
         throw new IllegalArgumentException("Invalid bridge choice: " + choice);

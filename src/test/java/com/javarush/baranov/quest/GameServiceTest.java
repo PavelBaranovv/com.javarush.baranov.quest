@@ -48,7 +48,7 @@ public class GameServiceTest {
 
     @Test
     public void shouldReturnCorrectStateAfterBridgeRefuse() {
-        GameState newState = gameService.handlePlayerChoice(GameState.BRIDGE, "Остаться в комнате");
+        GameState newState = gameService.handlePlayerChoice(GameState.BRIDGE, "Остаться в каюте");
         assertEquals(GameState.STAY_IN_ROOM, newState);
     }
 

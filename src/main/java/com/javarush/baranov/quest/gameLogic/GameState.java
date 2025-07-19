@@ -79,4 +79,8 @@ public enum GameState implements Serializable {
     public String getMessage() {
         return message;
     }
+
+    public boolean isInGame() {
+        return this != VICTORY && this != LOSE;
+    }
 }
