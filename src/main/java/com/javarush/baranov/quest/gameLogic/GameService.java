@@ -47,7 +47,7 @@ public class GameService {
     private GameState handleCrewmateAsking(String choice) {
         if (choice.equals("Проснешься?")) {
             return GameState.SLEEPING;
-        } else if (choice.equals("Миссии?")) {
+        } else if (choice.equals("Миссия?")) {
             return GameState.MISSION;
         }
         throw new IllegalArgumentException("Invalid crewmate question: " + choice);

@@ -48,6 +48,10 @@ public class GameServlet extends HttpServlet {
 
         GameState newState = gameService.handlePlayerChoice(gameState, choice);
         session.setAttribute("gameState", newState);
-        req.getRequestDispatcher("game.jsp").forward(req, resp);
+        if (newState == GameState.VICTORY || newState == GameState.LOSE) {
+            req.getRequestDispatcher("result.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("game.jsp").forward(req, resp);
+        }
     }
 }

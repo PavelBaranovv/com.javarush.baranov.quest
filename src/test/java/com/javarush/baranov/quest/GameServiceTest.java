@@ -69,7 +69,7 @@ public class GameServiceTest {
 
     @Test
     public void shouldReturnCorrectStateAfterCrewmateAskingAboutMission() {
-        GameState newState = gameService.handlePlayerChoice(GameState.CREWMATE_ASKING, "Миссии?");
+        GameState newState = gameService.handlePlayerChoice(GameState.CREWMATE_ASKING, "Миссия?");
         assertEquals(GameState.MISSION, newState);
     }
 
