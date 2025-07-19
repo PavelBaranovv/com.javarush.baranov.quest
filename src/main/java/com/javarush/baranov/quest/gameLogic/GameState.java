@@ -1,6 +1,8 @@
 package com.javarush.baranov.quest.gameLogic;
 
-public enum GameState {
+import java.io.Serializable;
+
+public enum GameState implements Serializable {
     QUESTION_1("""
             Компьютер спрашивает: "Сколько будет 2 + 2 ?"\s"""),
 
@@ -72,5 +74,9 @@ public enum GameState {
 
     GameState(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

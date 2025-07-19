@@ -1,16 +1,22 @@
 package com.javarush.baranov.quest.gameLogic;
 
-public class Player {
-    private final String name;
+import java.io.Serializable;
+
+public class Player implements Serializable {
+    private String name;
     private int gamesCount;
 
-    Player(String name) {
-        this.name = name;
+    public Player() {
+        this.name = null;
         this.gamesCount = 0;
     }
 
     public void incrementGamesCount() {
         gamesCount++;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
