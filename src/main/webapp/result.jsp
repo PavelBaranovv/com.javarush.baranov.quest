@@ -16,11 +16,12 @@
 <c:choose>
     <c:when test="${sessionScope.gameState.name() eq 'VICTORY'}">
         <h1>&#9989; Миссия выполнена!</h1>
+        <p>${sessionScope.gameState.getMessage()}</p>
     </c:when>
     <c:when test="${sessionScope.gameState.name() eq 'LOSE'}">
         <h1>&#10060; Миссия провалена!</h1>
+        <p>${sessionScope.loseMessage}</p>
     </c:when>
 </c:choose>
-<p>${sessionScope.gameState.getMessage()}</p>
 </body>
 </html>

@@ -63,11 +63,11 @@
             </c:when>
             <c:when test="${sessionScope.gameState == GameState.MISSION ||
                                 sessionScope.gameState == GameState.SLEEPING}">
-                <button type="submit" name="choice" value="Проверить шлюз" class="choice-button">
-                    Проверить шлюз
-                </button>
                 <button type="submit" name="choice" value="Ничего не делать" class="choice-button">
                     Ничего не делать
+                </button>
+                <button type="submit" name="choice" value="Проверить шлюз" class="choice-button">
+                    Проверить шлюз
                 </button>
             </c:when>
             <c:when test="${sessionScope.gameState == GameState.ALIENS_MEETING}">
@@ -79,11 +79,11 @@
                 </button>
             </c:when>
             <c:when test="${sessionScope.gameState == GameState.ALIENS_PARTY}">
-                <button type="submit" name="choice" value="Вернуться домой" class="choice-button">
-                    Вернуться домой
-                </button>
                 <button type="submit" name="choice" value="Остаться с инопланетянами" class="choice-button">
                     Остаться с инопланетянами
+                </button>
+                <button type="submit" name="choice" value="Вернуться домой" class="choice-button">
+                    Вернуться домой
                 </button>
             </c:when>
         </c:choose>

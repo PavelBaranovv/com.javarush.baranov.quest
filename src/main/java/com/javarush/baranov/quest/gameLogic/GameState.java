@@ -66,7 +66,7 @@ public enum GameState implements Serializable {
             <br>
             Спустя некоторое время, они предлагают Вам остаться путешествовать и веселиться с ними навсегда"""),
 
-    LOSE(null),
+    LOSE("Вы провалили квест. Попробуйте ещё раз."),
 
     VICTORY("""
             Вы успешно вернулись на Землю, получив все необходимые данные об инопланетной цивилизации<br>
@@ -80,6 +80,25 @@ public enum GameState implements Serializable {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getCustomLoseMessage(GameState previousState) {
+        if (this != LOSE) {
+            throw new IllegalStateException("Not a LOSE state. Current state: " + this.name());
+        }
+        return switch (previousState) {
+            case QUESTION_1, QUESTION_2 -> "Вы неверно ответили на вопрос компьютера.";
+            case MISSION, SLEEPING -> """
+                    Вы отказались проверить шлюз. <br>
+                    Инопланетный корабль вскоре отстыковался и улетел.""";
+            case ALIENS_MEETING -> """
+                    Инопланетные существа были глубоко обижены вашим жестом.<br>
+                    А в ответ уничтожили Ваш корабль.""";
+            case ALIENS_PARTY -> """
+                    Вы остались с инопланетянами, а ученые на земле так и остались в неведении<br>
+                    Цель миссии не выполнена.""";
+            default -> "Вы провалили квест. Попробуйте ещё раз.";
+        };
     }
 
     public boolean isInGame() {
