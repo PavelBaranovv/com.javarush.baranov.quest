@@ -42,19 +42,25 @@ public class GameServlet extends HttpServlet {
         }
 
         String choice = req.getParameter("choice");
+
         if (choice == null || choice.isEmpty()) {
             throw new IllegalArgumentException("Invalid choice request");
+        }
+        if (choice.equals("restart")) {
+            session.removeAttribute("gameState");
+            player.incrementGamesCount();
+            resp.sendRedirect(req.getContextPath() + "/game");
+            return;
         }
 
         GameState newState = gameService.handlePlayerChoice(oldState, choice);
         session.setAttribute("gameState", newState);
+
         if (newState == GameState.VICTORY) {
             req.getRequestDispatcher("result.jsp").forward(req, resp);
         } else if (newState == GameState.LOSE) {
-            String loseMessage = newState.getCustomLoseMessage(oldState);
-            session.setAttribute("loseMessage", loseMessage);
+            newState.setCustomLoseMessage(oldState);
             req.getRequestDispatcher("result.jsp").forward(req, resp);
-
         } else {
             req.getRequestDispatcher("game.jsp").forward(req, resp);
         }

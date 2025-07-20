@@ -57,7 +57,7 @@
                 <button type="submit" name="choice" value="Проснешься?" class="choice-button">
                     Проснешься?
                 </button>
-                <button type="submit" name="choice" value="Миссии?" class="choice-button">
+                <button type="submit" name="choice" value="Миссия?" class="choice-button">
                     Миссия?
                 </button>
             </c:when>

@@ -72,7 +72,7 @@ public enum GameState implements Serializable {
             Вы успешно вернулись на Землю, получив все необходимые данные об инопланетной цивилизации<br>
             Земным ученым ещё долго предстоит с ними разбираться.""");
 
-    private final String message;
+    private String message;
 
     GameState(String message) {
         this.message = message;
@@ -82,11 +82,11 @@ public enum GameState implements Serializable {
         return message;
     }
 
-    public String getCustomLoseMessage(GameState previousState) {
+    public void setCustomLoseMessage(GameState previousState) {
         if (this != LOSE) {
             throw new IllegalStateException("Not a LOSE state. Current state: " + this.name());
         }
-        return switch (previousState) {
+        this.message = switch (previousState) {
             case QUESTION_1, QUESTION_2 -> "Вы неверно ответили на вопрос компьютера.";
             case MISSION, SLEEPING -> """
                     Вы отказались проверить шлюз. <br>
