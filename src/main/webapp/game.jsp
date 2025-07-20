@@ -9,6 +9,7 @@
 
 <body>
 <h1>Космический квест</h1>
+
 <p>${sessionScope.gameState.getMessage().replace("[name]", sessionScope.player.getName())}</p>
 
 <c:if test="${sessionScope.gameState.isInGame()}">
@@ -89,5 +90,11 @@
         </c:choose>
     </form>
 </c:if>
+
+<hr>
+<p><small><ul>
+    <li>Игрок: <span class="highlight">${sessionScope.player.name}</span><br></li>
+    <li>Игр сыграно: <span class="highlight">${sessionScope.player.getGamesCount()}</span></li>
+</ul></small></p>
 </body>
 </html>
