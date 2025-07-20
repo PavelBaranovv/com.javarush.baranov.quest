@@ -5,6 +5,7 @@
     <title>Космический квест</title>
     <meta charset="UTF-8">
 </head>
+
 <body>
 <c:choose>
     <c:when test="${sessionScope.gameState.name() eq 'VICTORY'}">

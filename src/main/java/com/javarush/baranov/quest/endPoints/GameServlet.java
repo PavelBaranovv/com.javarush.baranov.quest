@@ -18,9 +18,6 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=utf-8");
-        req.setCharacterEncoding("UTF-8");
-
         HttpSession session = req.getSession();
         GameState gameState = (GameState) session.getAttribute("gameState");
         if (gameState == null) {
@@ -31,9 +28,6 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=utf-8");
-        req.setCharacterEncoding("UTF-8");
-
         HttpSession session = req.getSession();
         GameState oldState = (GameState) session.getAttribute("gameState");
         Player player = (Player) session.getAttribute("player");
@@ -46,10 +40,11 @@ public class GameServlet extends HttpServlet {
         if (choice == null || choice.isEmpty()) {
             throw new IllegalArgumentException("Invalid choice request");
         }
+
         if (choice.equals("restart")) {
             session.removeAttribute("gameState");
             player.incrementGamesCount();
-            resp.sendRedirect(req.getContextPath() + "/game");
+            resp.sendRedirect(req.getContextPath() + "/home");
             return;
         }
 

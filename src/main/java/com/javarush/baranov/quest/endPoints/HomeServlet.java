@@ -10,33 +10,30 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name="HomeServlet", urlPatterns = {"/home"})
+@WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=utf-8");
-        req.setCharacterEncoding("UTF-8");
-
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("player");
         if (player == null) {
             session.setAttribute("player", new Player());
         }
-
         req.getRequestDispatcher("home.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/html; charset=utf-8");
-        req.setCharacterEncoding("UTF-8");
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("player");
-        String playerName = req.getParameter("playerName");
-
-        if (playerName != null && !playerName.isBlank()) {
-            player.setName(playerName.trim());
+        if (player.getName() == null) {
+            String playerName = req.getParameter("playerName");
+            if (playerName != null && !playerName.isBlank() && playerName.trim().length() <= 30) {
+                player.setName(playerName.trim());
+            } else {
+                req.setAttribute("error", "Неверное имя пользователя, попробуйте еще раз");
+                req.getRequestDispatcher("home.jsp").forward(req, resp);
+            }
         }
         resp.sendRedirect(req.getContextPath() + "/game");
     }

@@ -92,6 +92,7 @@
 </c:if>
 
 <hr>
+
 <p><small><ul>
     <li>Игрок: <span class="highlight">${sessionScope.player.name}</span><br></li>
     <li>Игр сыграно: <span class="highlight">${sessionScope.player.getGamesCount()}</span></li>
