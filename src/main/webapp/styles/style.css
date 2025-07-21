@@ -1,0 +1,155 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #a3b8c5;
+    color: #CAE9F5;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(27, 73, 101, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #5FA8D3;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.message {
+    background-color: rgba(31, 97, 141, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 4px solid #62B6CB;
+}
+
+.highlight {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.player-name-form, .start-form, .restart-form, .choice-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-name-input {
+    padding: 12px;
+    margin: 10px 0;
+    width: 80%;
+    border: 2px solid #5FA8D3;
+    border-radius: 5px;
+    background-color: rgba(202, 233, 245, 0.1);
+    color: #CAE9F5;
+    font-size: 1.1em;
+}
+
+.player-name-input::placeholder {
+    color: #5FA8D3;
+    opacity: 0.7;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    width: 80%;
+    max-width: 300px;
+}
+
+.submit-button, .start-button, .restart-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.submit-button:hover, .start-button:hover, .restart-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+.choice-button {
+    background-color: #5FA8D3;
+    color: white;
+}
+
+.choice-button:hover {
+    background-color: #62B6CB;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(95, 168, 211, 0.4);
+}
+
+.victory h1 {
+    color: #b7ffd6;
+    text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+}
+
+.lose h1 {
+    color: #ffafaf;
+    text-shadow: 0 0 15px rgba(255, 12, 12, 0.5);
+}
+
+.error-message {
+    color: #ff7676;
+    background-color: rgba(139, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border-left: 4px solid #8B0000;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(95, 168, 211, 0), rgba(95, 168, 211, 0.75), rgba(95, 168, 211, 0));
+    margin: 30px 0;
+}
+
+.player-info {
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    animation: fadeIn 0.4s ease-in;
+}
+
+/* Наведение курсора */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    button {
+        width: 95%;
+    }
+}
